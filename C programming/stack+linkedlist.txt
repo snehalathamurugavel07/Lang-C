@@ -1,0 +1,156 @@
+stack+linkedlist
+
+#include <stdio.h>
+#include<stdlib.h>
+
+//declaring functions
+
+void push();
+void pop();
+void display();
+
+int count = 0;
+struct node
+{
+    int data;
+    struct node *next;
+    
+}*first,*last,*top = NULL;
+
+
+void main()
+{
+   
+    while(1)
+    {
+        // to difine choices
+        printf("\n1. PUSH 2.POP 3.DISPLAY 4.EXIT");
+        int ch;
+        printf("\nenter your choice :");
+        scanf("%d",&ch);
+        
+        //to difine switch case
+        switch(ch)
+        {
+            case 1: 
+            {
+                push();
+                break;
+            }
+            case 2: 
+            {
+                pop();
+                break;
+            }
+            case 3: 
+            {
+                display();
+                break;
+            }
+            case 4: 
+            {
+                exit(0);
+                break;
+            }
+            default:
+            {
+                printf("\nInvalid input");
+            }
+                
+        }
+    }
+}
+
+// defining push function
+
+void push()
+{
+    int n;
+    struct node *temp;
+    if (top == NULL)
+    {
+        first = (struct node*)malloc(sizeof(struct node));
+      
+        scanf("%d",&n);
+        first->data = n;
+        first->next = NULL;
+        top = first;
+    }
+    else
+    {
+        temp = (struct node*)malloc(sizeof(struct node));
+        scanf("%d",&n);
+        temp->data = n;
+        temp->next = top;
+        top = temp;
+    }
+    count++;
+}
+// defining pop function
+
+void pop()
+{
+    struct node *temp;
+    if(top == NULL)
+    {
+        printf("\nStack Underflow");  
+    }
+    else
+    {
+        temp = top;
+        top = top->next;
+        free(temp);
+    }
+}
+
+// defining display function
+
+void display()
+{
+    if(top == NULL)
+    {
+        printf("stack is empty\n");
+    }
+    else
+    {
+        while(top!=NULL)
+        {
+            printf("%d ",top->data);
+            top = top->next;
+        }
+    printf("\n");
+    }
+}
+
+
+output :
+
+[?2004l
+
+1. PUSH 2.POP 3.DISPLAY 4.EXIT
+enter your choice :1
+3
+
+1. PUSH 2.POP 3.DISPLAY 4.EXIT
+enter your choice :1
+6
+
+1. PUSH 2.POP 3.DISPLAY 4.EXIT
+enter your choice :1
+9
+
+1. PUSH 2.POP 3.DISPLAY 4.EXIT
+enter your choice :3
+9 6 3 
+
+1. PUSH 2.POP 3.DISPLAY 4.EXIT
+enter your choice :2
+
+Stack Underflow
+1. PUSH 2.POP 3.DISPLAY 4.EXIT
+enter your choice :3
+stack is empty
+
+1. PUSH 2.POP 3.DISPLAY 4.EXIT
+enter your choice :4
+[?2004h

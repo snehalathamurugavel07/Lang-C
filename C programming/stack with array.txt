@@ -1,0 +1,92 @@
+stack with array
+
+#include<stdio.h>
+#include<stdlib.h>
+void push();
+void pop();
+void display();
+
+int n,top=-1,a[100];
+void main()
+{
+    printf("Enter the size of Stack:");
+    scanf("%d",&n);
+    
+    while(1)
+    {
+        printf("1.Push 2.Pop 3.Display 4.Exit\n");
+        int ch;
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1: push();
+            break;
+            case 2:pop();
+            break;
+            case 3:display();
+            break;
+            case 4:exit(0);
+            break;
+            default:
+            printf("Invalid");
+        }
+    }
+}
+
+void push()
+{
+    if(top==n-1)
+    {
+        printf("Overflow\n");
+    }
+    else
+    {
+        top++;
+        printf("Enter the value :");
+        int val;
+        scanf("%d",&val);
+        a[top]=val;
+    }
+}
+
+void pop()
+{
+    if(top==-1)
+    {
+        printf("Underflow\n");
+    }
+    else
+    {
+        top--;
+    }
+}
+
+void display()
+{
+    int i;
+    for(i=0;i<=top;i++)
+    {
+        printf("%d",a[i]);
+    }
+    printf("\n");
+}
+
+
+output :
+
+[?2004l
+Enter the size of Stack:4
+1.Push 2.Pop 3.Display 4.Exit
+1
+Enter the value :5
+1.Push 2.Pop 3.Display 4.Exit
+1
+Enter the value :6 7
+1.Push 2.Pop 3.Display 4.Exit
+2
+1.Push 2.Pop 3.Display 4.Exit
+3
+5
+1.Push 2.Pop 3.Display 4.Exit
+
+

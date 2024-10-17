@@ -1,0 +1,201 @@
+user defined values and print the values
+
+singly linked list
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+void create()
+{
+    struct node *first, *last;
+    first=(struct node*)malloc(sizeof(struct node));
+    int n;
+    scanf("%d",&n);
+    first->data=n;
+    first->next=NULL;
+    last=first;
+    
+    scanf("%d",&n);
+    
+    while(n!=-1)
+    {
+        struct node *temp;
+        temp=(struct node*)malloc(sizeof(struct node));
+        temp->data=n;
+        temp->next=NULL;
+        last->next=temp;
+        last=temp;
+        
+        scanf("%d",&n);
+    }
+    display(first);
+}
+
+
+void display(struct node *first)
+{
+    while(first!=NULL)
+    {
+        printf("%d ",first->data);
+        first=first->next;
+    }
+}
+
+void main()
+{
+    create();
+}
+
+output :
+
+[?2004l
+1
+5
+3
+6
+8
+-1
+1 5 3 6 8 [?2004h
+
+
+
+
+
+
+doubly linked list
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    struct node *prev;
+    int data;
+    struct node *next;
+};
+
+void create()
+{
+    struct node *first, *last;
+    first=(struct node*)malloc(sizeof(struct node));
+    int n;
+    scanf("%d",&n);
+    first->prev=NULL;
+    first->data=n;
+    first->next=NULL;
+    last=first;
+    
+    scanf("%d",&n);
+    
+    while(n!=-1)
+    {
+        struct node *temp;
+        temp=(struct node*)malloc(sizeof(struct node));
+        temp->prev=last;
+        temp->data=n;
+        temp->next=NULL;
+        last->next=temp;
+        last=temp;
+        
+        scanf("%d",&n);
+    }
+    display(first);
+    reversedisplay(last);
+}
+
+void display(struct node *first)
+{
+    while(first!=NULL)
+    {
+        printf("%d ",first->data);
+        first=first->next;
+    }
+    printf("\n");
+}
+
+void reversedisplay(struct node *last)
+{
+    while(last!=NULL)
+    {
+        printf("%d ",last->data);
+        last=last->prev;
+    }
+}
+
+void main()
+{
+    create();
+}
+
+
+output:
+
+2 4 5 7 -1
+2 4 5 7 
+7 5 4 2 
+
+
+
+
+
+
+
+circular linked list
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+}*first,*last,*temp;
+
+void create()
+{
+    
+    first = (struct node*)malloc(sizeof(struct node));
+    int n;
+    scanf("%d",&n);
+    first->data = n;
+    first->next = first;
+    last = first;
+    
+    scanf("%d",&n);
+    
+    while(n!=-1)
+    {
+        struct node *temp;
+        temp =(struct node *)malloc(sizeof(struct node));
+        temp->data = n;
+        temp->next = first;
+        last->next = temp;
+        last=temp;
+        
+        scanf("%d",&n);
+        
+    }
+    display(first);
+}
+
+void display(struct node *first)
+{
+    while(first != NULL)
+    {
+        printf("%d ",first->data);
+        first = first-> next;
+    }
+}
+
+void main()
+{
+    create();
+}
+
+
+output :
+
+non stop values
